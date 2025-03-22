@@ -1,0 +1,146 @@
+mc_branch:
+  - 'MCParticles.PDG' #0
+  - 'MCParticles.generatorStatus' #1
+  - 'MCParticles.simulatorStatus' #2
+  - 'MCParticles.charge' #3
+  - 'MCParticles.time' #4
+  - 'MCParticles.mass' #5
+  - 'MCParticles.vertex.x' #6
+  - 'MCParticles.vertex.y' #7
+  - 'MCParticles.vertex.z' #8
+  - 'MCParticles.endpoint.x' #9
+  - 'MCParticles.endpoint.y' #10
+  - 'MCParticles.endpoint.z' #11
+  - 'MCParticles.momentum.x' #12
+  - 'MCParticles.momentum.y' #13
+  - 'MCParticles.momentum.z' #14
+  - 'MCParticles.momentumAtEndpoint.x' #15
+  - 'MCParticles.momentumAtEndpoint.y' #16
+  - 'MCParticles.momentumAtEndpoint.z' #17
+  - 'MCParticles.spin.x' #18
+  - 'MCParticles.spin.y' #19
+  - 'MCParticles.spin.z' #20
+  - 'MCParticles.colorFlow.a' #21
+  - 'MCParticles.colorFlow.b' #22
+  - 'MCParticles.parents_begin' #23
+  - 'MCParticles.parents_end' #24
+  - 'MCParticles.daughters_begin' #25
+  - 'MCParticles.daughters_end' #26
+
+track_feature_branch:
+  - 'CentralTrackSegments.length' #0
+  - 'CentralTrackSegments.lengthError' #1
+  - 'CentralTrackSegments.points_begin' #2
+  - 'CentralTrackSegments.points_end' #3
+  - '_CentralTrackSegments_track.index' #4
+  - '_CentralTrackSegments_track.collectionID' #5
+
+track_branch:
+  - '_CentralTrackSegments_points.surface' #0
+  - '_CentralTrackSegments_points.system' #1
+  - '_CentralTrackSegments_points.position.x' #2
+  - '_CentralTrackSegments_points.position.y' #3
+  - '_CentralTrackSegments_points.position.z' #4
+  - '_CentralTrackSegments_points.positionError.xx' #5
+  - '_CentralTrackSegments_points.positionError.yy' #6
+  - '_CentralTrackSegments_points.positionError.zz' #7
+  - '_CentralTrackSegments_points.positionError.xy' #8
+  - '_CentralTrackSegments_points.positionError.xz' #9
+  - '_CentralTrackSegments_points.positionError.yz' #10
+  - '_CentralTrackSegments_points.momentum.x' #11
+  - '_CentralTrackSegments_points.momentum.y' #12
+  - '_CentralTrackSegments_points.momentum.z' #13
+  - '_CentralTrackSegments_points.momentumError.xx' #14
+  - '_CentralTrackSegments_points.momentumError.yy' #15
+  - '_CentralTrackSegments_points.momentumError.zz' #16
+  - '_CentralTrackSegments_points.momentumError.xy' #17
+  - '_CentralTrackSegments_points.momentumError.xz' #18
+  - '_CentralTrackSegments_points.momentumError.yz' #19
+  - '_CentralTrackSegments_points.time' #20
+  - '_CentralTrackSegments_points.timeError' #21
+  - '_CentralTrackSegments_points.theta' #22
+  - '_CentralTrackSegments_points.phi' #23
+  - '_CentralTrackSegments_points.directionError.xx' #24
+  - '_CentralTrackSegments_points.directionError.yy' #25
+  - '_CentralTrackSegments_points.directionError.xy' #26
+  - '_CentralTrackSegments_points.pathlength' #27
+  - '_CentralTrackSegments_points.pathlengthError' #28
+  - '_CentralTrackVertices_associatedParticles.index' #29 
+  - '_CentralTrackVertices_associatedParticles.collectionID' #30
+
+old_btof_rec_hit_branch:
+  - 'TOFBarrelRecHit.cellID' #0
+  - 'TOFBarrelRecHit.position.x' #1
+  - 'TOFBarrelRecHit.position.y' #2
+  - 'TOFBarrelRecHit.position.z' #3
+  - 'TOFBarrelRecHit.positionError.xx' #4
+  - 'TOFBarrelRecHit.positionError.yy' #5
+  - 'TOFBarrelRecHit.positionError.zz' #6
+  - 'TOFBarrelRecHit.time' #7
+  - 'TOFBarrelRecHit.timeError' #8
+  - 'TOFBarrelRecHit.edep' #9
+  - 'TOFBarrelRecHit.edepError' #10
+
+new_btof_rec_hit_branch:
+  - 'TOFBarrelRecHits.cellID' #0
+  - 'TOFBarrelRecHits.position.x' #1
+  - 'TOFBarrelRecHits.position.y' #2
+  - 'TOFBarrelRecHits.position.z' #3
+  - 'TOFBarrelRecHits.positionError.xx' #4
+  - 'TOFBarrelRecHits.positionError.yy' #5
+  - 'TOFBarrelRecHits.positionError.zz' #6
+  - 'TOFBarrelRecHits.time' #7
+  - 'TOFBarrelRecHits.timeError' #8
+  - 'TOFBarrelRecHits.edep' #9
+  - 'TOFBarrelRecHits.edepError' #10
+
+etof_rec_hit_branch:
+  - 'TOFEndcapRecHits.cellID' #0
+  - 'TOFEndcapRecHits.position.x' #1
+  - 'TOFEndcapRecHits.position.y' #2
+  - 'TOFEndcapRecHits.position.z' #3
+  - 'TOFEndcapRecHits.positionError.xx' #4
+  - 'TOFEndcapRecHits.positionError.yy' #5
+  - 'TOFEndcapRecHits.positionError.zz' #6
+  - 'TOFEndcapRecHits.time' #7
+  - 'TOFEndcapRecHits.timeError' #8
+  - 'TOFEndcapRecHits.edep' #9
+  - 'TOFEndcapRecHits.edepError' #10
+
+btof_hit_associaction_branch:
+  - '_TOFBarreHitAssociations_rawHit.index' #0
+  - '_TOFBarreHitAssociations_rawHit.collectionID' #1
+
+etof_hit_associaction_branch:
+  - '_TOFEndcapHitAssociatedPoints.index' #0
+  - '_TOFEndcapHitAssociatedPoints.collectionID' #1
+
+btof_raw_hit_branch:
+  - 'TOFBarrelHits.cellID' #0
+  - 'TOFBarrelHits.EDep' #1
+  - 'TOFBarrelHits.time' #2
+  - 'TOFBarrelHits.pathLength' #3
+  - 'TOFBarrelHits.quality' #4
+  - 'TOFBarrelHits.position.x' #5
+  - 'TOFBarrelHits.position.y' #6
+  - 'TOFBarrelHits.position.z' #7
+  - 'TOFBarrelHits.momentum.x' #8
+  - 'TOFBarrelHits.momentum.y' #9
+  - 'TOFBarrelHits.momentum.z' #10
+
+etof_raw_hit_branch:
+  - 'TOFEndcapHits.cellID' #0
+  - 'TOFEndcapHits.EDep' #1
+  - 'TOFEndcapHits.time' #2
+  - 'TOFEndcapHits.pathLength' #3
+  - 'TOFEndcapHits.quality' #4
+  - 'TOFEndcapHits.position.x' #5
+  - 'TOFEndcapHits.position.y' #6
+  - 'TOFEndcapHits.position.z' #7
+  - 'TOFEndcapHits.momentum.x' #8
+  - 'TOFEndcapHits.momentum.y' #9
+  - 'TOFEndcapHits.momentum.z' #10
+
+btof_raw_hit_mc_associaction_branch:
+  - '_TOFBarrelHits_MCParticle.index' #0
+  - '_TOFBarrelHits_MCParticle.collectionID' #1
