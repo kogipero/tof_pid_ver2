@@ -1,12 +1,12 @@
-directory_name: 'dir_test'
-# analysis_event_type: 'MY_PYTHIA_PATH_2' 
-analysis_event_type: 'OFFICIAL_NCDIS_PYTHIA_epic_VER25_1_0' 
+directory_name: 'eicrecon_ver2501_NCDIS_N50000_th_01'
+analysis_event_type: 'FILE_PATH_VER2501_NCDIS' 
+# analysis_event_type: 'FILE_PATH_SINGLE_PARTICLE_PION_NEW' 
 # FILE_PATH_NCDIS_LARGE or FILE_PATH_SINGLE_PARTICLE_PION_OLDVERSION or FILE_PATH_SINGLE_PARTICLE_KAON_OLDVERSION or MYPYTHIA_FILE_PATH
 VERBOSE: True
 PLOT_VERBOSE: True
 DETAIL_PLOT_VERBOSE: False
 
-SELECTED_EVENTS: 10000
+SELECTED_EVENTS: 50000
 
 #konosita mada mizissou
 VERTEX_X_MIN: 20

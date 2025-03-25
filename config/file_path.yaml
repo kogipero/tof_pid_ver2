@@ -8,6 +8,9 @@ FILE_PATH_NCDIS:
 FILE_PATH_NEW_VERSION_NCDIS:
   path: '/home/onok/eic/create_events/recon_out/pythia/EICrecon_ver24.07.0/EICrecon_ver_24_7_0_merged_1000files.root'
 
+FILE_PATH_VER2501_NCDIS:
+  path: '/home/onok/eic/create_events/recon_out/pythia/official_generated_25_1_0/NC/minQ2=10/eicrecon_ver2501_minq2=10.root'
+
 FILE_PATH_SINGLE_PARTICLE_PION:
   path: '/home/onok/eic/create_events/recon_out/pi/Rec_single_particle_pion_N1000000_100m_5g_20241214.root'
   description: 'This is the file path of the single particle pion events that I created.'

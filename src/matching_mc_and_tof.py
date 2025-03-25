@@ -212,95 +212,33 @@ class MatchingMCAndTOF:
 
         unique_events = sorted(stable_btof_hit_info['event'].unique())
 
-        # Reconstructed hit branches
         btof_rec_position_x = self.dis_file[self.branch['new_btof_rec_hit_branch'][1]].array(library='ak')
-        btof_rec_position_y = self.dis_file[self.branch['new_btof_rec_hit_branch'][2]].array(library='ak')
-        btof_rec_position_z = self.dis_file[self.branch['new_btof_rec_hit_branch'][3]].array(library='ak')
-        btof_rec_time = self.dis_file[self.branch['new_btof_rec_hit_branch'][7]].array(library='ak')
+        # btof_rec_position_x = self.dis_file[self.branch['old_btof_rec_hit_branch'][1]].array(library='ak')
 
         for event in unique_events:
             event_df = stable_btof_hit_info[stable_btof_hit_info['event'] == event].copy()
             
             new_array = event_df['position_x'].values.astype(float)
             
-            rec_x = np.array(btof_rec_position_x[event], dtype=float)
-            rec_y = np.array(btof_rec_position_y[event], dtype=float)
-            rec_z = np.array(btof_rec_position_z[event], dtype=float)
-            rec_time = np.array(btof_rec_time[event], dtype=float)
+            rec_array = np.array(btof_rec_position_x[event], dtype=float)
 
             print(f"Processing event {event} ...")
             
             matching_new_indices = []
-            for x in rec_x:
+            for x in rec_array:
                 idx = np.where(np.isclose(new_array, x, atol=1e-1))[0]
                 if idx.size > 0:
                     closest_idx = idx[np.argmin(np.abs(new_array[idx] - x))]
                     matching_new_indices.append(closest_idx)
             
-            if matching_new_indices:
-                filtered_event_df = pd.DataFrame({
-                    'event': event_df.iloc[matching_new_indices]['event'].values,
-                    'mc_index': event_df.iloc[matching_new_indices]['mc_index'].values,
-                    'mc_pdg': event_df.iloc[matching_new_indices]['mc_pdg'].values,
-                    'mc_generator_status': event_df.iloc[matching_new_indices]['mc_generator_status'].values,
-                    'mc_charge': event_df.iloc[matching_new_indices]['mc_charge'].values,
-                    'mc_vertex_x': event_df.iloc[matching_new_indices]['mc_vertex_x'].values,
-                    'mc_vertex_y': event_df.iloc[matching_new_indices]['mc_vertex_y'].values,
-                    'mc_vertex_z': event_df.iloc[matching_new_indices]['mc_vertex_z'].values,
-                    'mc_momentum_x': event_df.iloc[matching_new_indices]['mc_momentum_x'].values,
-                    'mc_momentum_y': event_df.iloc[matching_new_indices]['mc_momentum_y'].values,
-                    'mc_momentum_z': event_df.iloc[matching_new_indices]['mc_momentum_z'].values,
-                    'mc_momentum': event_df.iloc[matching_new_indices]['mc_momentum'].values,
-                    'mc_momentum_phi': event_df.iloc[matching_new_indices]['mc_momentum_phi'].values,
-                    'mc_momentum_theta': event_df.iloc[matching_new_indices]['mc_momentum_theta'].values,
-                    'time': rec_time[:len(matching_new_indices)],  # Reconstructed hit time
-                    'position_x': rec_x[:len(matching_new_indices)],  # Reconstructed hit position_x
-                    'position_y': rec_y[:len(matching_new_indices)],  # Reconstructed hit position_y
-                    'position_z': rec_z[:len(matching_new_indices)],  # Reconstructed hit position_z
-                })
-                
-                filtered_rows.append(filtered_event_df)
-
-        if filtered_rows:
-            filtered_stable_btof_hit_info = pd.concat(filtered_rows, ignore_index=True)
-            filtered_stable_btof_hit_info.to_csv(f'./out/{self.name}/filtered_stable_btof_hit_info.csv', index=False)
-            return filtered_stable_btof_hit_info
-        else:
-            print("No matching reconstructed hits found.")
-            return pd.DataFrame()
-
-        # filtered_rows = []
-
-        # unique_events = sorted(stable_btof_hit_info['event'].unique())
-
-        # btof_rec_position_x = self.dis_file[self.branch['new_btof_rec_hit_branch'][1]].array(library='ak')
-        # # btof_rec_position_x = self.dis_file[self.branch['old_btof_rec_hit_branch'][1]].array(library='ak')
-
-
-        # for event in unique_events:
-        #     event_df = stable_btof_hit_info[stable_btof_hit_info['event'] == event].copy()
+            filtered_event_df = event_df.iloc[matching_new_indices]
             
-        #     new_array = event_df['position_x'].values.astype(float)
-            
-        #     rec_array = np.array(btof_rec_position_x[event], dtype=float)
+            filtered_rows.append(filtered_event_df)
 
-        #     print(f"Processing event {event} ...")
-            
-        #     matching_new_indices = []
-        #     for x in rec_array:
-        #         idx = np.where(np.isclose(new_array, x, atol=1e-1))[0]
-        #         if idx.size > 0:
-        #             closest_idx = idx[np.argmin(np.abs(new_array[idx] - x))]
-        #             matching_new_indices.append(closest_idx)
-            
-        #     filtered_event_df = event_df.iloc[matching_new_indices]
-            
-        #     filtered_rows.append(filtered_event_df)
-
-        # filtered_stable_btof_hit_info = pd.concat(filtered_rows, ignore_index=True)
-        # filtered_stable_btof_hit_info.to_csv(f'./out/{self.name}/filtered_stable_btof_hit_info.csv', index=False)
+        filtered_stable_btof_hit_info = pd.concat(filtered_rows, ignore_index=True)
+        filtered_stable_btof_hit_info.to_csv(f'./out/{self.name}/filtered_stable_btof_hit_info.csv', index=False)
 
 
-        # print(" completed filtering stable particle hits ...")
+        print(" completed filtering stable particle hits ...")
 
-        # return filtered_stable_btof_hit_info
+        return filtered_stable_btof_hit_info

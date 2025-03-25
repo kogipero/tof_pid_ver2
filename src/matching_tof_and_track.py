@@ -97,6 +97,9 @@ class MatchingTOFAndTrack:
             if tof_pos_phis_array.size == 0:
                 continue
 
+            if track_momentum < 0.1:
+                continue
+
             delta_angles = angular_distance(
                 track_pos_phi,    
                 track_pos_theta,  
@@ -108,7 +111,6 @@ class MatchingTOFAndTrack:
             min_delta_angle = delta_angles[min_idx]
 
             if min_delta_angle < angle_threshold:
-                if track_momentum > 0.1:
                     btof_and_track_matched['event_idx'].append(event_idx)
                     track_idx = track_segments_on_btof_pd['track_segments_id'].iloc[i]
                     btof_and_track_matched['track_idx'].append(track_idx)
