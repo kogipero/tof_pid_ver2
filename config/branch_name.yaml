@@ -94,6 +94,19 @@ new_btof_rec_hit_branch:
   - 'TOFBarrelRecHits.edep' #9
   - 'TOFBarrelRecHits.edepError' #10
 
+new_etof_rec_hit_branch:
+  - 'TOFEndcapRecHits.cellID' #0
+  - 'TOFEndcapRecHits.position.x' #1
+  - 'TOFEndcapRecHits.position.y' #2
+  - 'TOFEndcapRecHits.position.z' #3
+  - 'TOFEndcapRecHits.positionError.xx' #4
+  - 'TOFEndcapRecHits.positionError.yy' #5
+  - 'TOFEndcapRecHits.positionError.zz' #6
+  - 'TOFEndcapRecHits.time' #7
+  - 'TOFEndcapRecHits.timeError' #8
+  - 'TOFEndcapRecHits.edep' #9
+  - 'TOFEndcapRecHits.edepError' #10
+
 etof_rec_hit_branch:
   - 'TOFEndcapRecHits.cellID' #0
   - 'TOFEndcapRecHits.position.x' #1
@@ -144,3 +157,7 @@ etof_raw_hit_branch:
 btof_raw_hit_mc_associaction_branch:
   - '_TOFBarrelHits_MCParticle.index' #0
   - '_TOFBarrelHits_MCParticle.collectionID' #1
+
+etof_raw_hit_mc_associaction_branch:
+  - '_TOFEndcapHits_MCParticle.index' #0
+  - '_TOFEndcapHits_MCParticle.collectionID' #1

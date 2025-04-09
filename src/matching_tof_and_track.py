@@ -97,8 +97,8 @@ class MatchingTOFAndTrack:
             if tof_pos_phis_array.size == 0:
                 continue
 
-            if track_momentum < 0.1:
-                continue
+            # if track_momentum < 0.1:
+            #     continue
 
             delta_angles = angular_distance(
                 track_pos_phi,    

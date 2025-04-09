@@ -107,6 +107,22 @@ class TrackPlotter:
     def plot_track_segments_on_tof_info(self, track_segments_on_btof_df):
         print('Start plotting track segments on TOF')
 
+        myfunc.make_histogram_root(track_segments_on_btof_df['track_pos_x'],
+                        100, [-1000, 1000], 'Track_pos_x_on_BTOF', 'x [mm]', 'Entries',
+                        f'{self.name}/track_pos_x_on_btof', self.rootfile)
+        
+        myfunc.make_histogram_root(track_segments_on_btof_df['track_pos_y'],
+                        100, [-1000, 1000], 'Track_pos_y_on_BTOF', 'y [mm]', 'Entries',
+                        f'{self.name}/track_pos_y_on_btof', self.rootfile)
+        
+        myfunc.make_histogram_root(track_segments_on_btof_df['track_pos_z'],
+                        100, [-1800, 1500], 'Track_pos_z_on_BTOF', 'z [mm]', 'Entries',
+                        f'{self.name}/track_pos_z_on_btof', self.rootfile)
+        
+        myfunc.make_histogram_root(track_segments_on_btof_df['track_pos_r'],
+                        300, [0, 1000], 'Track_pos_r_on_BTOF', 'r [mm]', 'Entries',
+                        f'{self.name}/track_pos_r_on_btof', self.rootfile)
+        
         myfunc.make_histogram_root(track_segments_on_btof_df['track_momentum'],
                         100, [0, 20], 'Track_momentum_on_BTOF', 'p [GeV]', 'Entries',
                         f'{self.name}/track_momentum_on_btof', self.rootfile)
@@ -114,5 +130,49 @@ class TrackPlotter:
         myfunc.make_histogram_root(track_segments_on_btof_df['track_pathlength'],
                         100, [0, 3000], 'Track_pathlength_on_BTOF', 'Pathlength [mm]', 'Entries',
                         f'{self.name}/track_pathlength_on_btof', self.rootfile)
+        
+    def plot_missing_matched_track_segments_on_tof_info(self, missing_matched_track_segments_on_btof_df):
+
+        print('Start plotting missing matched track segments on TOF')
+
+        myfunc.make_histogram_root(missing_matched_track_segments_on_btof_df['track_pos_x'],
+                        100, [-1000, 1000], 'Missing_matched_track_pos_x_on_BTOF', 'x [mm]', 'Entries',
+                        f'{self.name}/missing_matched_track_pos_x_on_btof', self.rootfile)
+        
+        myfunc.make_histogram_root(missing_matched_track_segments_on_btof_df['track_pos_y'],
+                        100, [-1000, 1000], 'Missing_matched_track_pos_y_on_BTOF', 'y [mm]', 'Entries',
+                        f'{self.name}/missing_matched_track_pos_y_on_btof', self.rootfile)
+        
+        myfunc.make_histogram_root(missing_matched_track_segments_on_btof_df['track_pos_z'],
+                        100, [-1800, 1500], 'Missing_matched_track_pos_z_on_BTOF', 'z [mm]', 'Entries',
+                        f'{self.name}/missing_matched_track_pos_z_on_btof', self.rootfile)
+        
+        myfunc.make_histogram_root(missing_matched_track_segments_on_btof_df['track_pos_r'],
+                        300, [0, 1000], 'Missing_matched_track_pos_r_on_BTOF', 'r [mm]', 'Entries',
+                        f'{self.name}/missing_matched_track_pos_r_on_btof', self.rootfile)
+        
+        myfunc.make_histogram_root(missing_matched_track_segments_on_btof_df['track_momentum'],
+                        100, [0, 20], 'Missing_matched_track_momentum_on_BTOF', 'p [GeV]', 'Entries',
+                        f'{self.name}/missing_matched_track_momentum_on_btof', self.rootfile)
+        myfunc.make_histogram_root(missing_matched_track_segments_on_btof_df['track_pathlength'],
+                        100, [0, 3000], 'Missing_matched_track_pathlength_on_BTOF', 'Pathlength [mm]', 'Entries',
+                        f'{self.name}/missing_matched_track_pathlength_on_btof', self.rootfile)
+        
+        myfunc.make_2Dhistogram_root(
+            missing_matched_track_segments_on_btof_df['track_pos_x'],
+            100, [-1000, 1000], 
+            missing_matched_track_segments_on_btof_df['track_pos_y'],
+            100, [-1000, 1000],
+            'Missing_matched_track_pos_x_vs_y_on_BTOF', 'x [mm]', 'y [mm]', 'Entries',
+            f'{self.name}/missing_matched_track_pos_x_vs_y_on_btof', rootfile=self.rootfile
+        )
+        myfunc.make_2Dhistogram_root(
+            missing_matched_track_segments_on_btof_df['track_pos_r'],
+            100, [0, 1000],
+            missing_matched_track_segments_on_btof_df['track_pos_z'],
+            100, [-1000, 1000],
+            'Missing_matched_track_pos_r_vs_z_on_BTOF', 'r [mm]', 'z [mm]', 'Entries',
+            f'{self.name}/missing_matched_track_pos_r_vs_z_on_btof', rootfile=self.rootfile
+        )
         
         print('End plotting track segments on TOF')

@@ -33,17 +33,17 @@ class TOFReader:
         btof_r     = np.sqrt(btof_pos_x**2 + btof_pos_y**2)
         btof_time  = self.dis_file[self.branch['btof_raw_hit_branch'][2]].array(library='ak')[:SELECTED_EVENTS]
 
-        # ectof_pos_x = self.dis_file[self.branch['etof_raw_hit_branch'][5]].array(library='ak')[:SELECTED_EVENTS]
-        # ectof_pos_y = self.dis_file[self.branch['etof_raw_hit_branch'][6]].array(library='ak')[:SELECTED_EVENTS]
-        # ectof_pos_z = self.dis_file[self.branch['etof_raw_hit_branch'][7]].array(library='ak')[:SELECTED_EVENTS]
-        # ectof_r     = np.sqrt(ectof_pos_x**2 + ectof_pos_y**2)
-        # ectof_time  = self.dis_file[self.branch['etof_raw_hit_branch'][2]].array(library='ak')[:SELECTED_EVENTS]
-
-        ectof_pos_x = self.dis_file[self.branch['etof_rec_hit_branch'][5]].array(library='ak')[:SELECTED_EVENTS]
-        ectof_pos_y = self.dis_file[self.branch['etof_rec_hit_branch'][6]].array(library='ak')[:SELECTED_EVENTS]
-        ectof_pos_z = self.dis_file[self.branch['etof_rec_hit_branch'][7]].array(library='ak')[:SELECTED_EVENTS]
+        ectof_pos_x = self.dis_file[self.branch['etof_raw_hit_branch'][5]].array(library='ak')[:SELECTED_EVENTS]
+        ectof_pos_y = self.dis_file[self.branch['etof_raw_hit_branch'][6]].array(library='ak')[:SELECTED_EVENTS]
+        ectof_pos_z = self.dis_file[self.branch['etof_raw_hit_branch'][7]].array(library='ak')[:SELECTED_EVENTS]
         ectof_r     = np.sqrt(ectof_pos_x**2 + ectof_pos_y**2)
-        ectof_time  = self.dis_file[self.branch['etof_rec_hit_branch'][2]].array(library='ak')[:SELECTED_EVENTS]
+        ectof_time  = self.dis_file[self.branch['etof_raw_hit_branch'][2]].array(library='ak')[:SELECTED_EVENTS]
+
+        # ectof_pos_x = self.dis_file[self.branch['etof_rec_hit_branch'][5]].array(library='ak')[:SELECTED_EVENTS]
+        # ectof_pos_y = self.dis_file[self.branch['etof_rec_hit_branch'][6]].array(library='ak')[:SELECTED_EVENTS]
+        # ectof_pos_z = self.dis_file[self.branch['etof_rec_hit_branch'][7]].array(library='ak')[:SELECTED_EVENTS]
+        # ectof_r     = np.sqrt(ectof_pos_x**2 + ectof_pos_y**2)
+        # ectof_time  = self.dis_file[self.branch['etof_rec_hit_branch'][2]].array(library='ak')[:SELECTED_EVENTS]
 
         btof_phi = np.arctan2(btof_pos_y, btof_pos_x)
         btof_theta = np.arctan2(btof_r, btof_pos_z)
@@ -53,7 +53,11 @@ class TOFReader:
 
         if plot_verbose:
             self.plotter.plot_tof_info(
-              btof_pos_x, btof_pos_y, btof_pos_z, btof_time, btof_phi, btof_theta, btof_r,
+              btof_pos_x, btof_pos_y, btof_pos_z, btof_time, btof_phi, btof_theta, btof_r, area='btof',
+            )
+
+            self.plotter.plot_tof_info(
+              ectof_pos_x, ectof_pos_y, ectof_pos_z, ectof_time, ectof_phi, ectof_theta, ectof_r, area='etof',
             )
 
         return btof_pos_x, btof_pos_y, btof_pos_z, btof_time, btof_phi, btof_theta, btof_r, ectof_pos_x, ectof_pos_y, ectof_pos_z, ectof_time, ectof_phi, ectof_theta, ectof_r   

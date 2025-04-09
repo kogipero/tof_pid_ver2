@@ -260,10 +260,28 @@ class TrackReader:
         'track_segments_id': [],
         }
 
+        missing_matched = {
+        'event': [],
+        'track_pos_x': [],
+        'track_pos_y': [],
+        'track_pos_z': [],
+        'track_pos_r': [],
+        'track_momentum_x': [],
+        'track_momentum_y': [],
+        'track_momentum_z': [],
+        'track_momentum': [],
+        'track_momentum_pt': [],
+        'track_momentum_phi': [],
+        'track_momentum_theta': [],
+        'track_pathlength': [],
+        'track_segments_id': [],
+        }
+
         for event in range(len(all_tracks)):
             for track in all_tracks[event]:
                 for segment in track:
-                    if 625 < segment[9] < 642 and -1500 < segment[5] < 1840:
+                    if 625 < segment[9] < 660 and -1150 < segment[5] < 1740:
+                        # if segment[10] > 500: 
                         track_segments_on_btof['event'].append(segment[0])
                         track_segments_on_btof['track_pos_x'].append(segment[3])
                         track_segments_on_btof['track_pos_y'].append(segment[4])
@@ -279,10 +297,27 @@ class TrackReader:
                         track_segments_on_btof['track_pathlength'].append(segment[10])
                         track_segments_on_btof['track_segments_id'].append(segment[1])
 
+                        if 0 < segment[10] < 100:
+                            missing_matched['event'].append(segment[0])
+                            missing_matched['track_pos_x'].append(segment[3])
+                            missing_matched['track_pos_y'].append(segment[4])
+                            missing_matched['track_pos_z'].append(segment[5])
+                            missing_matched['track_pos_r'].append(segment[9])
+                            missing_matched['track_momentum_x'].append(segment[6])
+                            missing_matched['track_momentum_y'].append(segment[7])
+                            missing_matched['track_momentum_z'].append(segment[8])
+                            missing_matched['track_momentum'].append(np.sqrt(segment[6]**2 + segment[7]**2 + segment[8]**2))
+                            missing_matched['track_momentum_pt'].append(np.sqrt(segment[6]**2 + segment[7]**2))
+                            missing_matched['track_momentum_phi'].append(np.arctan2(segment[7], segment[6]))
+                            missing_matched['track_momentum_theta'].append(np.arccos(segment[8]/np.sqrt(segment[6]**2 + segment[7]**2 + segment[8]**2)))
+                            missing_matched['track_pathlength'].append(segment[10])
+                            missing_matched['track_segments_id'].append(segment[1])
+
         track_segments_on_btof_df = pd.DataFrame(track_segments_on_btof)
         track_segments_on_btof_df.to_csv(f'./out/{self.name}/track_segments_on_btof.csv')
 
         if plot_verbose:
             self.track_plotter.plot_track_segments_on_tof_info(track_segments_on_btof_df)
+            self.track_plotter.plot_missing_matched_track_segments_on_tof_info(missing_matched)
 
         return track_segments_on_btof_df

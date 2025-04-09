@@ -53,13 +53,15 @@ def analyzer(
     )
 
     match_mc_and_tof = MatchingMCAndTOF(mc=mc, tof=tof, rootfile=rootfile, name=name, dis_file=tree, branch=branch)
-    btof_hit_and_mc_info = match_mc_and_tof.matching_mc_and_tof(
+    btof_hit_and_mc_info, etof_hit_info_df = match_mc_and_tof.matching_mc_and_tof(
         mc_pdg, mc_vertex_x, mc_vertex_y, mc_vertex_z, mc_px, mc_py, mc_pz, mc_charge, mc_generatorStatus,
-        btof_time, btof_pos_x, btof_pos_y, btof_pos_z, btof_phi, btof_theta, btof_r, SELECTED_EVENTS, VERBOSE, PLOT_VERBOSE
+        btof_time, btof_pos_x, btof_pos_y, btof_pos_z, btof_phi, btof_theta, btof_r, ectof_time, ectof_pos_x, ectof_pos_y, ectof_pos_z, ectof_phi, ectof_theta, ectof_r,
+        SELECTED_EVENTS, verbose=VERBOSE, plot_verbose=PLOT_VERBOSE
     )
+    
 
-    stable_particle_hit = match_mc_and_tof.filtered_stable_particle_hit_and_generated_point(btof_hit_and_mc_info, PLOT_VERBOSE)
-    filtered_stable_btof_hit_info = match_mc_and_tof.isReconstructedHit(stable_particle_hit)
+    stable_btof_hit_info_df, stable_etof_hit_info_df = match_mc_and_tof.filtered_stable_particle_hit_and_generated_point(btof_hit_and_mc_info, etof_hit_info_df, plot_verbose=PLOT_VERBOSE)
+    filtered_stable_btof_hit_info = match_mc_and_tof.isReconstructedHit(stable_btof_hit_info_df, stable_etof_hit_info_df)
 
     track = TrackReader(dis_file=tree, branch=branch, name=name, rootfile=rootfile)
 

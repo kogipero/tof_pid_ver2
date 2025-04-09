@@ -54,7 +54,7 @@ class MatchingTOFAndTrackPlotter:
     myfunc.make_histogram_root(
         btof_and_track_matched['tof_time'],
         100,
-        hist_range=[0, 100],
+        hist_range=[0, 20],
         title='TOF_time_matching_tof_and_track',
         xlabel='time [ns]',
         ylabel='Entries',

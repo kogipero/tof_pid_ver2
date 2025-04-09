@@ -11,12 +11,19 @@ FILE_PATH_NEW_VERSION_NCDIS:
 FILE_PATH_VER2501_NCDIS:
   path: '/home/onok/eic/create_events/recon_out/pythia/official_generated_25_1_0/NC/minQ2=10/eicrecon_ver2501_minq2=10.root'
 
+FILE_PATH_VER2503_01_NCDIS:
+  path: '/home/onok/2025/2025-4/eic/create_events/official_data/epic-25-3-1/minQ2=10/merged_pythia8NCDIS_18x275_minQ2=10_beamEffects_xAngle=-0.025_hiDiv_0_0151.root'
+  number_of_events: 77077
+
 FILE_PATH_SINGLE_PARTICLE_PION:
   path: '/home/onok/eic/create_events/recon_out/pi/Rec_single_particle_pion_N1000000_100m_5g_20241214.root'
   description: 'This is the file path of the single particle pion events that I created.'
   number_of_events: 1000000
   version: '24.12.0'
   production_method: 'Single particle'
+
+FILE_PATH_SINGLE_PARTICLE_PION_VER250301:
+  path: '/home/onok/2025/2025-4/eic/create_events/rec_out/single_particle/uniform/Rec_sP_pi_uniform_100m_3_5_g_N50000_ver25-03-1.root'
 
 FILE_PATH_SINGLE_PARTICLE_PION_NEW:
   path: '/home/onok/eic/create_events/recon_out/pi/Rec_single_particle_uniform_N100000_20250313.root'
